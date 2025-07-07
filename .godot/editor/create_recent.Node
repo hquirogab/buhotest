@@ -1,0 +1,13 @@
+Label
+Timer
+VBoxContainer
+HBoxContainer
+Button
+BoxContainer
+TextureRect
+TextureButton
+Panel
+AnimatedSprite2D
+Sprite2D
+Node2D
+Control

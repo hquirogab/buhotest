@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4n0wmai8ftm8"]
+
+[ext_resource type="Texture2D" uid="uid://bxxpikl24ti8q" path="res://assets/bg.png" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cc7uujj20rs4s" path="res://assets/buhoBase/buhoOpenEyes.png" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://pxv6ae1eomel" path="res://main.gd" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://dypt5k7qgfp67" path="res://assets/buhoEstudiando/Parpadeo1.png" id="4_272bh"]
+[ext_resource type="Texture2D" uid="uid://tegj1cjg7el" path="res://assets/buhoEstudiando/Parpadeo2.png" id="5_5vw27"]
+[ext_resource type="Texture2D" uid="uid://bid1aviqlt3wx" path="res://assets/buhoEstudiando/Parpadeo3.png" id="6_kek77"]
+[ext_resource type="Texture2D" uid="uid://cdrfsrm5o2oar" path="res://assets/buhoEstudiando/Parpadeo4.png" id="7_4c57u"]
+[ext_resource type="Texture2D" uid="uid://bpa2yslyatuqk" path="res://assets/buhoBase/BuhoClosedEyes.png" id="8_5vw27"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efxa6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_272bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5vw27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kek77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4c57u")
+}],
+"loop": true,
+"name": &"estudiar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0xm2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5vw27")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_h2yge")
+
+[node name="Bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 796.0
+offset_bottom = 969.0
+texture = ExtResource("1_ig7tw")
+
+[node name="BuhoTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="TimerLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 174.0
+offset_top = 287.0
+offset_right = 217.0
+offset_bottom = 310.0
+text = "25:00"
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 250.0
+offset_right = 266.0
+offset_bottom = 281.0
+text = "Iniciar pomodoro
+"
+
+[node name="Buho" type="AnimatedSprite2D" parent="."]
+position = Vector2(391, 459)
+sprite_frames = SubResource("SpriteFrames_efxa6")
+animation = &"idle"
+
+[connection signal="pressed" from="StartButton" to="." method="start_pomodoro"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4n0wmai8ftm8"]
+[gd_scene load_steps=13 format=3 uid="uid://b4n0wmai8ftm8"]
 
 [ext_resource type="Texture2D" uid="uid://bxxpikl24ti8q" path="res://assets/bg.png" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cc7uujj20rs4s" path="res://assets/buhoBase/buhoOpenEyes.png" id="2_0xm2m"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bid1aviqlt3wx" path="res://assets/buhoEstudiando/Parpadeo3.png" id="6_kek77"]
 [ext_resource type="Texture2D" uid="uid://cdrfsrm5o2oar" path="res://assets/buhoEstudiando/Parpadeo4.png" id="7_4c57u"]
 [ext_resource type="Texture2D" uid="uid://bpa2yslyatuqk" path="res://assets/buhoBase/BuhoClosedEyes.png" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://c483rdr7prssb" path="res://assets/fish.png" id="9_kek77"]
+[ext_resource type="Texture2D" uid="uid://vs1l8cjqga5k" path="res://assets/tienda/FondoTienda.jpg" id="10_4c57u"]
+[ext_resource type="Texture2D" uid="uid://dskikhpplm66x" path="res://assets/tienda/cama.png" id="11_efxa6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efxa6"]
 animations = [{
@@ -55,33 +58,135 @@ offset_right = 796.0
 offset_bottom = 969.0
 texture = ExtResource("1_ig7tw")
 
-[node name="BuhoTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
 [node name="Timer" type="Timer" parent="."]
 
 [node name="TimerLabel" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 174.0
-offset_top = 287.0
-offset_right = 217.0
-offset_bottom = 310.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.149
+anchor_top = 0.11
+anchor_right = 0.149
+anchor_bottom = 0.11
+offset_left = -21.604
+offset_top = -11.59
+offset_right = 21.396
+offset_bottom = 11.41
 text = "25:00"
 
 [node name="StartButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 124.0
-offset_top = 250.0
-offset_right = 266.0
-offset_bottom = 281.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.155
+anchor_top = 0.072
+anchor_right = 0.155
+anchor_bottom = 0.072
+offset_left = -71.38
+offset_top = -15.768
+offset_right = 70.62
+offset_bottom = 15.232
 text = "Iniciar pomodoro
 "
 
 [node name="Buho" type="AnimatedSprite2D" parent="."]
 position = Vector2(391, 459)
 sprite_frames = SubResource("SpriteFrames_efxa6")
-animation = &"idle"
+animation = &"estudiar"
+
+[node name="Fish" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 28.0
+offset_right = 2178.0
+offset_bottom = 1628.0
+scale = Vector2(0.0503125, 0.0503125)
+texture = ExtResource("9_kek77")
+
+[node name="FishLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+light_mask = 2
+layout_mode = 0
+offset_left = 664.0
+offset_top = 28.0
+offset_right = 776.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="TiendaButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 617.0
+offset_top = 103.0
+offset_right = 678.0
+offset_bottom = 134.0
+text = "Tienda"
+
+[node name="TiendaVentana" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 19.0
+offset_top = 144.0
+offset_right = 768.0
+offset_bottom = 600.0
+
+[node name="FondoTienda" type="TextureRect" parent="TiendaVentana"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 751.0
+offset_bottom = 460.0
+texture = ExtResource("10_4c57u")
+
+[node name="Cama" type="VBoxContainer" parent="TiendaVentana"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 16.0
+offset_right = 583.0
+offset_bottom = 467.0
+scale = Vector2(0.609351, 0.609351)
+alignment = 1
+
+[node name="CamaTexture" type="TextureRect" parent="TiendaVentana/Cama"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_efxa6")
+
+[node name="CamaLabel" type="Label" parent="TiendaVentana/Cama"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 50
+text = "2x 🐟"
+horizontal_alignment = 1
+
+[node name="CamaButton" type="Button" parent="TiendaVentana/Cama"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 8.49
+theme_override_font_sizes/font_size = 50
+text = "Comprar"
+
+[node name="BuyTextTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="BuyTextLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.515
+anchor_top = 0.66
+anchor_right = 0.515
+anchor_bottom = 0.66
+offset_left = -210.94
+offset_top = -27.54
+offset_right = 211.06
+offset_bottom = 27.46
+theme_override_font_sizes/font_size = 40
+text = "Compraste una cama!"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="StartButton" to="." method="start_pomodoro"]
+[connection signal="pressed" from="TiendaVentana/Cama/CamaButton" to="." method="comprar_cama"]
+[connection signal="timeout" from="BuyTextTimer" to="." method="hide_item_label"]

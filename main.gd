@@ -59,7 +59,7 @@ func comprar_cama():
 		update_fish()
 		buy_item_label(item_Name)
 	else:
-		print("No tienes suficientes peces")
+		not_enough_money()
 		
 func buy_item_label(item_Name):
 	buy_text_timer.start()
@@ -68,3 +68,9 @@ func buy_item_label(item_Name):
 	
 func hide_item_label():
 	buy_text.hide()
+
+func not_enough_money():
+	buy_text_timer.start()
+	buy_text.show()
+	buy_text.text = "¡No tienes suficientes peces!"
+	

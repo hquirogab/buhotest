@@ -175,16 +175,17 @@ one_shot = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.515
-anchor_top = 0.66
-anchor_right = 0.515
-anchor_bottom = 0.66
-offset_left = -210.94
-offset_top = -27.54
-offset_right = 211.06
-offset_bottom = 27.46
+anchor_left = 0.493
+anchor_top = 0.667
+anchor_right = 0.493
+anchor_bottom = 0.667
+offset_left = -267.428
+offset_top = -27.3231
+offset_right = 267.572
+offset_bottom = 27.6769
 theme_override_font_sizes/font_size = 40
-text = "Compraste una cama!"
+horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="StartButton" to="." method="start_pomodoro"]
